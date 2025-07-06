@@ -35,6 +35,7 @@ sudo systemctl restart systemd-resolved
 ```bash
 git clone https://github.com/Ayman92M/pihole-cloudflared-compose-doh.git
 cd pihole-cloudflared-compose-doh
+mkdir -p etc-pihole
 ```
 
 
@@ -98,6 +99,18 @@ docker compose up -d
 ```
 
 ---
+
+
+## 🔐 Set Pi-hole Admin Password
+
+To set or change the admin password:
+
+```bash
+docker exec -it pihole pihole setpassword
+```
+
+---
+
 
 ## 🌐 Access the Pi-hole Web UI
 
