@@ -7,29 +7,6 @@ This repository sets up [Pi-hole](https://pi-hole.net/) using [Cloudflared](http
 
 ---
 
-## 🔧 Prerequisites
-
-Before starting, disable the default systemd stub listener on port 53 to free it for Pi-hole:
-
-```bash
-sudo nano /etc/systemd/resolved.conf
-```
-
-Update or ensure the following lines exist:
-
-```ini
-DNSStubListener=no
-DNS=127.0.0.1
-```
-
-Then restart the service:
-
-```bash
-sudo systemctl restart systemd-resolved
-```
-
----
-
 ## 📥 Clone the Repository
 
 ```bash
@@ -37,7 +14,6 @@ git clone https://github.com/Ayman92M/pihole-cloudflared-compose-doh.git
 cd pihole-cloudflared-compose-doh
 mkdir -p etc-pihole
 ```
-
 
 ---
 
@@ -92,11 +68,43 @@ networks:
     driver: bridge
 ```
 
+Pull the Docker images:
+
+```bash
+docker compose pull
+```
+
+---
+
+## 🔧 Prerequisites
+
+Before starting the containers, disable the default systemd stub listener on port 53 to free it for Pi-hole:
+
+```bash
+sudo nano /etc/systemd/resolved.conf
+```
+
+Update or ensure the following lines exist:
+
+```ini
+DNSStubListener=no
+DNS=127.0.0.1
+```
+
+Then restart the service:
+
+```bash
+sudo systemctl restart systemd-resolved
+```
+
+---
+
 Start the stack:
 
 ```bash
 docker compose up -d
 ```
+
 
 ---
 
